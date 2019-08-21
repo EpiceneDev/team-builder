@@ -14,7 +14,9 @@ const Form = (props) => {
     event.preventDefault();
     console.log(member);
     setMembers(members => [...members, member]);
+    setMember({name: "", email: "", role: ""})
   }
+
   return (
     <form onSubmit={handleSubmit}>
       <input placeholder="New Team Member" 

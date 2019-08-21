@@ -11,7 +11,7 @@ function App() {
   ]);
   return (
     <div className="App">
-      <Form />
+      <Form setMembers={setMembers} />
       {members.map(member => <Card member={member} />)}
     </div>
   );

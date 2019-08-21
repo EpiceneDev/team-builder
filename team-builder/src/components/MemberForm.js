@@ -6,11 +6,11 @@ const MemberForm = props => {
   const { member } = props;
 
   return (
-    <>
-      <h3>{member.name}</h3>
-      <h5>{member.email}</h5>
-      <h5>{member.role}</h5>
-    </>
+    <form>
+      <input placeholder="New Team Member" />
+      <input placeholder="email" />
+      <input placeholder="role" />
+    </form>
   )
 };
      

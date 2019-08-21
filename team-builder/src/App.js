@@ -9,9 +9,13 @@ function App() {
     {name: "Bob", email: "some@thing.org", role: "cinnamin"},
     {name: "Mauli", email: "same@thing.org", role: "food"}
   ]);
+
+  const addMember = member => {
+    setMembers([...members, member]);
+  }
   return (
     <div className="App">
-      <Form setMembers={setMembers} />
+      <Form submitMember={addMember} />
       {members.map(member => <Card member={member} />)}
     </div>
   );

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 //NEED {name: "", email: "", role: ""}
 
 const Form = (props) => {
-  const { setMembers } = props;
+  const { submitMember } = props;
   const [member, setMember] = useState({name: "", email: "", role: ""});
 
   const handleChange = event => {
@@ -13,7 +13,8 @@ const Form = (props) => {
   const handleSubmit = event => {
     event.preventDefault();
     console.log(member);
-    setMembers(members => [...members, member]);
+    //setMembers(members => [...members, member]);
+    submitMember(member);
     setMember({name: "", email: "", role: ""})
   }
 
@@ -38,6 +39,5 @@ const Form = (props) => {
 
   )
 };
-     
 
 export default Form;

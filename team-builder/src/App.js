@@ -4,10 +4,13 @@ import MemberForm from './components/MemberForm';
 
 
 function App() {
- 
+  const [members, setMembers] = useState([
+    {name: "Bob", email: "some@thing.org", role: "cinnamin"},
+    {name: "Mauli", email: "same@thing.org", role: "food"}
+  ]);
   return (
     <div className="App">
-      <MemberForm member={{name: "Bob", email: "some@thing.org", role: "cinnamin"}} />
+      {members.map(member => <MemberForm member={member} />)}
     </div>
   );
 }

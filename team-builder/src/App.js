@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import MemberForm from './components/MemberForm';
+import Form from './components/Form.js';
+import Card from './components/Card.js'
 
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
   ]);
   return (
     <div className="App">
-      {members.map(member => <MemberForm member={member} />)}
+      <Form />
+      {members.map(member => <Card member={member} />)}
     </div>
   );
 }

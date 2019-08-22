@@ -19,8 +19,10 @@ function App() {
     <div className="App">
       <Link to='/'>Home</Link>
       <Link to='/add'>Add New Member</Link>
-      <Route path="/add" render={props => <Form submitMember={addMember} />} />
-      <Route exact path="/" render={props => members.map(member => <Card member={member} />)}/>
+      <Route path="/add" 
+            render={props => <Form {...props} submitMember={addMember} />} />
+      <Route exact path="/" 
+            render={props => members.map(member => <Card member={member} />)}/>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import Form from './components/Form.js';
-import Card from './components/Card.js'
+import Card from './components/Card.js';
+import { Route, Link } from 'react-router-dom';
 
 
 function App() {
@@ -14,9 +15,12 @@ function App() {
     setMembers([...members, member]);
   }
   return (
+    
     <div className="App">
-      <Form submitMember={addMember} />
-      {members.map(member => <Card member={member} />)}
+      <Link to='/'>Home</Link>
+      <Link to='/add'>Add New Member</Link>
+      <Route path="/add" render={props => <Form submitMember={addMember} />} />
+      <Route exact path="/" render={props => members.map(member => <Card member={member} />)}/>
     </div>
   );
 }

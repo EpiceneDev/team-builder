@@ -7,12 +7,13 @@ import { Route, Link } from 'react-router-dom';
 
 function App() {
   const [members, setMembers] = useState([
-    {name: "Bob", email: "some@thing.org", role: "cinnamin"},
-    {name: "Mauli", email: "same@thing.org", role: "food"}
+    {id: 0, name: "Bob", email: "some@thing.org", role: "cinnamin"},
+    {id: 1, name: "Mauli", email: "same@thing.org", role: "food"}
   ]);
 
   const addMember = member => {
-    setMembers([...members, member]);
+    //setMembers([...members, member]); <==Changed to add id for editing purpose
+    setMembers([...members, {...member, id: Date.now()}]);
   }
   return (
     
@@ -23,6 +24,12 @@ function App() {
             render={props => <Form {...props} submitMember={addMember} />} />
       <Route exact path="/" 
             render={props => members.map(member => <Card member={member} />)}/>
+      <Route path="/edit/:id"
+            render={props => {
+              console.log("Route to edit props: ", props);
+              const member = members.find(member => member.id.toString() === props.match.params.id);
+              return <Form {...props} initialMember={member} />
+            }} />
     </div>
   );
 }

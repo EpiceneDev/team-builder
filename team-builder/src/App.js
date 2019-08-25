@@ -3,6 +3,7 @@ import './App.css';
 import Form from './components/Form.js';
 import Card from './components/Card.js';
 import { Route, Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 function App() {
@@ -13,8 +14,12 @@ function App() {
 
   const addMember = member => {
     //setMembers([...members, member]); <==Changed to add id for editing purpose
-    setMembers([...members, {...member, id: Date.now()}]);
-  }
+    // setMembers([...members, {...member, id: Date.now()}]);
+    axios.post(`http://localhost:3002/api/team-member/`, member)
+      .then(res => {
+        setMembers([...member, res.data])
+      });
+  };
   return (
     
     <div className="App">
